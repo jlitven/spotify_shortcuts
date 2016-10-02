@@ -3,10 +3,19 @@ import sys
 import spotipy
 import spotipy.util as util
 
-def get_user_token(username='1212629687',  # your username here
-                   scope='user-library-modify'):
+SCOPE = 'user-library-modify'
+USERNAME = 'your_username_goes_here'
+SPOTIPY_CLIENT_ID = 'your_client_id_goes_here'
+SPOTIPY_SECRET = 'your_secret_id_goes_here'
+SPOTIPY_REDIRECT_URI = 'your_redirect_id_goes_here'
+
+def get_user_token():
     """Get the token for the given user and scope"""
-    token = util.prompt_for_user_token(username, scope)
+    token = util.prompt_for_user_token(username=USERNAME,
+                                       scope=SCOPE,
+                                       client_id=SPOTIPY_CLIENT_ID,
+                                       client_secret=SPOTIPY_SECRET,
+                                       redirect_uri=SPOTIPY_REDIRECT_URI)
     return token
 
 def add_track_to_saved_tracks(track_uri):
